@@ -226,7 +226,7 @@ $(document).ready(function () {
         });
     });
 
-    // Handle Category Filtering, still static html, no ajax yet
+    // Listener to Handle Category Filtering
     $("#categoryFilter").change(function () {
         let selectedCategory = $(this).val();
 
@@ -241,7 +241,7 @@ $(document).ready(function () {
         });
     });
 
-    // Handle Status Filtering, still static html, no ajax yet
+    // Listener to Handle Status Filtering
     $("#statusFilter").change(function () {
         let selectedStatus = $(this).val();
 
