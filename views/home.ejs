@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div class="container mt-5">
         <h1 class="mb-4 text-center">Task Management System</h2>
             <h2 class="mb-5 d-flex justify-content-between">
                 Hello there, <%= username %>!
@@ -24,7 +24,7 @@
                     <div class="card text-white bg-primary">
                         <div class="card-body">
                             <h5 class="card-title">Total Tasks</h5>
-                            <p class="card-text">
+                            <p class="card-text" id="totalTasksCount">
                                 <%= tasks.length %>
                             </p>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="card text-white bg-warning">
                         <div class="card-body">
                             <h5 class="card-title">Pending Tasks</h5>
-                            <p class="card-text">
+                            <p class="card-text" id="pendingTasksCount">
                                 <%= tasks.filter(task=> task.status === 'Pending').length %>
                             </p>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="card text-white bg-success">
                         <div class="card-body">
                             <h5 class="card-title">Completed Tasks</h5>
-                            <p class="card-text">
+                            <p class="card-text" id="completedTasksCount">
                                 <%= tasks.filter(task=> task.status === 'Completed').length %>
                             </p>
                         </div>

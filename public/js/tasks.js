@@ -30,6 +30,56 @@ $(document).ready(function () {
         window.socket.on("taskDeleted", (data) => showToast(data.message, "#dc3545")); // Red for deletions
     }
 
+    // Function to update filter dropdowns based on current tasks
+    function updateFilters() {
+        // Update Category Filter
+        var categories = [];
+        $('#taskList tr').each(function () {
+            var category = $(this).find('td:nth-child(2)').text().trim();
+            if (category) {
+                categories.push(category);
+            }
+        });
+        categories = [...new Set(categories)];
+
+        var categoryFilter = $('#categoryFilter');
+        categoryFilter.find('option').not(':first').remove();
+        categories.forEach(function (cat) {
+            categoryFilter.append(`<option value="${cat}">${cat}</option>`);
+        });
+
+        // Update Status Filter
+        var statuses = [];
+        $('#taskList tr').each(function () {
+            var status = $(this).find('td:nth-child(4)').text().trim();
+            if (status) {
+                statuses.push(status);
+            }
+        });
+        statuses = [...new Set(statuses)]; // Unique statuses
+
+        var statusFilter = $('#statusFilter');
+        statusFilter.find('option').not(':first').remove();
+        statuses.forEach(function (stat) {
+            statusFilter.append(`<option value="${stat}">${stat}</option>`);
+        });
+    }
+
+    // Function to update dashboard counts
+    function updateDashboard() {
+        let total = $('#taskList tr').length;
+        let pending = 0;
+        let completed = 0;
+        $('#taskList tr').each(function () {
+            let statusText = $(this).find('td:nth-child(4)').text().trim();
+            if (statusText === "Pending") pending++;
+            if (statusText === "Completed") completed++;
+        });
+        $('#totalTasksCount').text(total);
+        $('#pendingTasksCount').text(pending);
+        $('#completedTasksCount').text(completed);
+    }
+
     // Handle Add Task
     $("#addTaskForm").submit(function (event) {
         event.preventDefault();
@@ -63,10 +113,8 @@ $(document).ready(function () {
                     </tr>
                 `);
 
-                // Check if the category is already in the dropdown
-                if ($("#categoryFilter option[value='" + task.category + "']").length === 0) {
-                    $("#categoryFilter").append(`<option value="${task.category}">${task.category}</option>`);
-                }
+                updateFilters();
+                updateDashboard();
 
                 $("#addTaskModal").modal("hide");
                 $("#addTaskForm")[0].reset();
@@ -137,6 +185,10 @@ $(document).ready(function () {
                 `);
 
                 $("#editTaskModal").modal("hide");
+
+                updateFilters();
+                updateDashboard();
+
             },
             error: function () {
                 alert("Error updating task");
@@ -162,6 +214,10 @@ $(document).ready(function () {
                 if (response.success) {
                     $(`#task-${taskId}`).remove();
                     $("#deleteTaskModal").modal("hide");
+
+                    updateFilters();
+                    updateDashboard();
+
                 }
             },
             error: function () {
@@ -199,4 +255,7 @@ $(document).ready(function () {
             }
         });
     });
+
+    updateFilters();
+    updateDashboard();
 });
