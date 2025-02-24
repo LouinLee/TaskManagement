@@ -17,13 +17,11 @@
 
 ### 📋 **Manajemen Tugas**
 - **Menambahkan tugas** baru dengan title, category, status, dan deadline.
-- **Mengedit tugas** dengan modal dan tanpa perlu refresh halaman (AJAX).
-- **Menghapus tugas** dengan modal dan tanpa perlu refresh halaman (AJAX).
-- **Filter tugas berdasarkan kategori dan status**.
+- **Mengedit dan menghapus tugas** dengan modal dan tanpa perlu refresh halaman (AJAX).
+- **Filter tugas berdasarkan kategori dan status** 
 
 ### 📡 **Real-Time Update & Notification**
 - Ketika tugas baru ditambahkan, diperbarui, atau dihapus, perubahan langsung terlihat tanpa reload dan notifikasi muncul
-
 
 ---
 
