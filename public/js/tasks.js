@@ -72,7 +72,11 @@ $(document).ready(function () {
                 $("#addTaskForm")[0].reset();
             },
             error: function () {
-                alert("Error adding task");
+                if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.message) {
+                    alert(xhr.responseJSON.message);
+                } else {
+                    alert("Error adding task");
+                }
             }
         });
     });

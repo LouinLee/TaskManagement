@@ -46,6 +46,8 @@ exports.login = async (req, res) => {
         const token = generateToken(user);
         res.cookie("token", token, { httpOnly: true, maxAge: 3600000 }); // 1 hour
 
+        // res.status(201).json({ token }); //For Postman token
+
         res.redirect("/home");
     } catch (error) {
         res.status(500).send(error.message);
