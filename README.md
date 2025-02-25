@@ -4,7 +4,7 @@
 
 ## Cara Menjalankan Proyek
 - Clone repository
-- Kemudian, run `npm install express mongoose bcryptjs jsonwebtoken cookie-parser dotenv ejs socket.io` pada terminal, pastikan berada di directory yang tepat
+- Install semua dependency yang dibutuhkan
 - Untuk memulai program, run `nodeman app.js`pada terminal
 
 ## Fitur yang Telah Diimplementasikan
