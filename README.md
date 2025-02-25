@@ -1,3 +1,5 @@
+https://github.com/LouinLee/TaskManagement
+
 ## Koneksi ke Database
 - Buat new connection di MongoDB, kemudian connect
 - Buat 2 database dengan nama `tasks` dan `users` dalam collection `todo`
@@ -22,7 +24,6 @@
 
 ### **Real-Time Update & Notification**
 - Ketika tugas baru ditambahkan, diperbarui, atau dihapus, perubahan langsung terlihat tanpa reload dan notifikasi muncul
-
 
 ---
 
