@@ -159,7 +159,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: `/tasks/edit/${taskId}`,
-            type: "POST",
+            type: "PUT",
             data: $(this).serialize(),
             success: function (updatedTask) {
                 let statusBadgeClass = updatedTask.status === "Completed" ? "bg-success"
