@@ -38,6 +38,6 @@ app.use(taskRoutes);
 // Share the io instance globally
 app.set("socketio", io);
 
-app.get("/", (req, res) => res.redirect("/home")); // Redirect to login
+app.get("/", (req, res) => res.redirect("/home")); // Redirect to home
 
 server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
